@@ -6,13 +6,13 @@
     <title>2026 국민취업지원제도 공식 안내 및 1분 모의진단</title>
     <style>
         :root {
-            /* 고용노동부 느낌의 신뢰감 있는 블루 컬러로 변경 */
-            --primary-color: #005eb8; 
-            --primary-dark: #004282;
+            --primary-color: #004e92;
+            --primary-dark: #003666;
+            --secondary-color: #f37321;
             --bg-color: #f4f6f9;
-            --text-main: #333333;
+            --text-main: #222222;
             --text-sub: #666666;
-            --border-color: #e5e5e5;
+            --border-color: #e5e7eb;
         }
         
         body {
@@ -30,117 +30,159 @@
             background-color: #ffffff;
             min-height: 100vh;
             padding-bottom: 80px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.05);
         }
 
-        /* --- 랜딩 페이지 (정부 느낌으로 전면 개편) --- */
-        #intro-page { display: block; animation: fadeIn 0.5s; }
+        /* ==================== 0. 헤더 영역 ==================== */
+        header.top-bar {
+            background-color: #ffffff;
+            padding: 16px 20px;
+            border-bottom: 3px solid var(--primary-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .ministry-text {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary-dark);
+            letter-spacing: -0.2px;
+            text-shadow: 1px 1px 0 rgba(0,0,0,0.05);
+        }
+
+        .system-text {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--secondary-color);
+            letter-spacing: -0.2px;
+        }
+
+        /* --- 랜딩 페이지 --- */
+        #intro-page { display: block; animation: fadeIn 0.4s ease-in-out; }
         
-        .intro-header {
+        .hero-section {
             text-align: center; 
             padding: 40px 20px 30px;
-            /* 고용노동부 공식 블루 그라데이션 */
-            background: linear-gradient(135deg, #004e92 0%, #007bff 100%);
+            background-color: var(--primary-color);
             color: white;
         }
         
-        /* 정부 인증 배지 스타일 */
-        .intro-header .gov-badge {
+        .hero-badge {
             display: inline-block;
-            background-color: rgba(255, 255, 255, 0.2);
-            padding: 5px 14px;
+            background-color: rgba(255, 255, 255, 0.15);
+            padding: 6px 14px;
             border-radius: 20px;
             font-size: 13px;
             font-weight: bold;
             margin-bottom: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.4);
             letter-spacing: -0.3px;
         }
         
-        .intro-header h1 { 
-            font-size: 26px; 
+        .hero-section h1 { 
+            font-size: 28px; 
             color: #ffffff; 
-            margin: 0 0 15px 0; 
-            line-height: 1.4; 
+            margin: 0 0 20px 0; 
+            line-height: 1.3; 
             letter-spacing: -0.5px;
         }
-        
-        .intro-header p { 
-            color: #e0f2fe; 
-            font-size: 16px; 
-            font-weight: 500; 
-            word-break: keep-all; 
-            line-height: 1.6; 
-            margin: 0;
-        }
-        
-        .intro-header .highlight-text { 
-            color: #ffe066; /* 밝은 노란색으로 강조 */
-            font-weight: bold; 
-            font-size: 17px;
+
+        .summary-box {
+            background-color: rgba(0, 0, 0, 0.25);
+            border-radius: 12px;
+            padding: 18px;
+            text-align: left;
+            margin-bottom: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .intro-content { padding: 20px; }
-        
-        .benefit-card {
-            background-color: #ffffff; border: 1px solid var(--border-color);
-            border-radius: 12px; padding: 20px; margin-bottom: 15px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
-        }
-        .benefit-card h3 { margin: 0 0 10px 0; font-size: 18px; color: var(--primary-dark); display: flex; align-items: center; gap: 8px; }
-        .benefit-card p { margin: 0; font-size: 15px; color: var(--text-sub); word-break: keep-all; }
+        .summary-box h2 { margin: 0 0 8px 0; font-size: 17px; color: #ffe066; }
+        .summary-box p { margin: 0; font-size: 15px; color: #ffffff; line-height: 1.6; word-break: keep-all; }
+        .summary-box strong { color: #ffffff; }
+
+        .warning-text { font-size: 13px; color: #b3d4ff; margin-top: 15px; }
+
+        /* --- 혜택 카드 섹션 --- */
+        .benefits-section { padding: 25px 20px; background-color: #ffffff; }
+        .benefits-section h2 { font-size: 18px; margin: 0 0 15px 0; color: var(--text-main); }
+
+        .benefit-card { background-color: #f8fafc; border: 1px solid var(--border-color); border-radius: 12px; padding: 18px; margin-bottom: 12px; }
+        .benefit-card h3 { margin: 0 0 6px 0; font-size: 16px; color: var(--primary-color); display: flex; align-items: center; gap: 6px; }
+        .benefit-card p { margin: 0; font-size: 14.5px; color: var(--text-sub); word-break: keep-all; }
         .benefit-card .highlight { color: #d84315; font-weight: bold; }
-        
+
         .start-btn {
-            display: block; width: calc(100% - 40px); margin: 30px auto; padding: 18px;
+            display: block; width: 100%; margin: 25px 0 0 0; padding: 18px;
             background-color: var(--primary-color); color: white; text-align: center;
-            font-size: 18px; font-weight: bold; border: none; border-radius: 8px;
-            cursor: pointer; box-shadow: 0 4px 12px rgba(0, 94, 184, 0.3); transition: background-color 0.2s;
+            font-size: 18px; font-weight: bold; border: none; border-radius: 12px;
+            cursor: pointer; box-shadow: 0 4px 12px rgba(0, 78, 146, 0.2); transition: 0.2s;
         }
         .start-btn:hover { background-color: var(--primary-dark); }
 
         /* --- 자가진단 폼 --- */
-        #diag-page { display: none; animation: fadeIn 0.5s; }
+        #diag-page { display: none; animation: fadeIn 0.4s; }
+        .diag-header { text-align:center; padding:20px; background:#f0f7ff; border-bottom: 1px solid #cce4ff; }
+        .diag-header h1 { font-size:20px; margin:0; color:var(--primary-dark); }
+        
         .step-section { padding: 25px 20px; border-bottom: 8px solid var(--bg-color); }
-        .step-title { font-size: 18px; font-weight: bold; margin-bottom: 8px; color: #111827; }
+        .step-title { font-size: 17px; font-weight: bold; margin-bottom: 8px; color: #111; }
         .step-desc { font-size: 14px; color: var(--text-sub); margin-bottom: 15px; line-height: 1.5; }
         
         .info-box {
             background-color: #f8fbff; border: 1px solid #cce4ff; 
             border-radius: 8px; padding: 12px; margin-bottom: 15px; font-size: 13.5px; color: #4b5563;
         }
-        .info-box strong { color: #005eb8; }
 
-        #student-step { display: none; background-color: #f5f8fc; }
+        #student-step, #teen-student-step, #teen-grad-step, #grad-step { display: none; background-color: #f5f8fc; }
 
-        /* 공통 셀렉트 박스 스타일 */
-        select.form-select {
-            width: 100%; padding: 15px; font-size: 15.5px; border: 1px solid var(--border-color);
-            border-radius: 8px; background-color: #fff; outline: none; box-sizing: border-box;
-            color: var(--text-main); cursor: pointer; transition: border-color 0.2s;
+        .alert-box {
+            display: none; padding: 12px; border-radius: 8px;
+            font-size: 13.5px; margin-top: 10px; line-height: 1.5; word-break: keep-all;
         }
-        select.form-select:focus { border-color: var(--primary-color); box-shadow: 0 0 0 2px rgba(0,94,184,0.1); }
-        select.form-select option { font-size: 15px; }
+        .student-alert { background-color: #fff8e1; border: 1px solid #ffe0b2; color: #d84315; }
+        .info-alert { background-color: #e3f2fd; border: 1px solid #90caf9; color: #0277bd; }
+        .info-alert strong { color: #004e92; }
 
-        /* 주소 선택 그룹 */
+        .form-select {
+            width: 100%; padding: 14px; font-size: 15px; border: 1px solid var(--border-color);
+            border-radius: 8px; background-color: #fff; outline: none; box-sizing: border-box;
+            color: var(--text-main); cursor: pointer; transition: 0.2s;
+        }
+        .form-select:focus { border-color: var(--primary-color); }
+
         .address-group { display: flex; gap: 8px; margin-top: 10px; }
         .address-group select { flex: 1; padding: 12px 8px; font-size: 15px; }
 
         /* --- 결과 화면 --- */
-        #result-area { display: none; padding: 30px 20px; text-align: center; background-color: #f0f7ff; }
-        .cta-buttons { display: flex; flex-direction: column; gap: 10px; margin-top: 20px; }
+        #result-area { display: none; padding: 30px 20px; background-color: #f0f7ff; }
+        
+        .type-result-box {
+            background-color: #ffffff; border: 2px solid var(--primary-color);
+            border-radius: 12px; padding: 20px; margin-bottom: 20px;
+            text-align: left; box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        .type-result-box h2 { margin: 0 0 10px 0; color: var(--primary-dark); font-size: 20px; border-bottom: 1px solid var(--border-color); padding-bottom: 10px; }
+        .type-result-box p { margin: 0; font-size: 15px; color: var(--text-main); line-height: 1.6; }
+        .type-result-box strong { color: #d84315; }
+
+        .notice-grad {
+            background-color: #fff3cd; color: #856404; border: 1px solid #ffeeba;
+            padding: 15px; border-radius: 8px; margin-bottom: 15px; font-size: 15px; line-height: 1.5;
+        }
+        .notice-grad.success { background-color: #d4edda; color: #155724; border-color: #c3e6cb; }
+        .notice-grad.error { background-color: #f8d7da; color: #721c24; border-color: #f5c6cb; }
+        
+        .center-info { background: #fff; padding: 18px; border-radius: 12px; margin: 20px 0; border: 1px solid #cce4ff; }
+        .center-info h4 { margin: 0 0 8px 0; color: var(--primary-color); font-size: 18px; text-align: center;}
+        .center-info p { margin: 4px 0; font-size: 15px; color: #333; text-align: center;}
+
+        .cta-buttons { display: flex; flex-direction: column; gap: 10px; }
+        .cta-buttons a { padding: 15px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 16px; display: block; text-align: center; }
         .btn-call { background-color: #4CAF50; color: white; }
         .btn-kakao { background-color: #FEE500; color: #371D1E; }
-        .btn-map { background-color: #4b89dc; color: white; } 
-        .btn-homepage { background-color: #333333; color: white; } 
-        
-        .cta-buttons a { 
-            padding: 15px; border-radius: 8px; text-decoration: none; 
-            font-weight: bold; font-size: 16px; display: block;
-        }
-
-        .center-info { background: #fff; padding: 15px; border-radius: 8px; margin-top: 15px; border: 1px dashed #90caf9; }
-        .center-info h4 { margin: 0 0 5px 0; color: #005eb8; font-size: 18px; }
-        .center-info p { margin: 5px 0; font-size: 14px; color: #333; }
+        .btn-map { background-color: var(--secondary-color); color: white; } 
+        .btn-homepage { background-color: #333; color: white; } 
 
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     </style>
@@ -148,20 +190,33 @@
 <body>
 
 <div class="container">
+    <header class="top-bar">
+        <div class="ministry-text">고용노동부</div>
+        <div class="system-text">국민취업지원제도</div>
+    </header>
+
     <div id="intro-page">
-        <header class="intro-header">
-            <div class="gov-badge">🇰🇷 고용노동부 주관 공식 국가정책</div>
-            <h1>2026 국민취업지원제도<br>1분 모의진단 🕵️‍♂️</h1>
-            <p>비용 요구 NO! 사기 걱정 NO!<br>국가에서 취업을 준비하는 분들께<br><span class="highlight-text">100% 전액 무료</span>로 수당과 취업을 지원합니다.</p>
-        </header>
-        <div class="intro-content">
+        <div class="hero-section">
+            <div class="hero-badge">고용노동부 주관 공식 국가정책</div>
+            <h1>2026 국민취업지원제도<br>1분 모의진단</h1>
+            
+            <div class="summary-box">
+                <h2>💡 국민취업지원제도란?</h2>
+                <p>고용노동부에서 주관하여 실업자의 구직활동과 생계 안정을 지원하는 국가 프로그램입니다.<br><br>만 15~69세 구직자에게 <strong>최장 6개월간 구직촉진수당</strong>을 지급하고, 개인별 <strong>맞춤형 취업지원서비스를 무료로 제공</strong>합니다.</p>
+            </div>
+            
+            <div class="warning-text">※ 100% 전액 무료 지원! 비용을 요구하는 사기성 광고에 주의하세요.</div>
+        </div>
+
+        <div class="benefits-section">
+            <h2>💡 주요 지원 혜택 안내</h2>
             <div class="benefit-card">
                 <h3>💰 구직촉진수당 (I유형)</h3>
-                <p>취업 준비에만 집중하세요! 기본 월 60만 원에 부양가족 1인당 10만 원씩 추가되어 <span class="highlight">월 최대 100만 원을 6개월간</span> 지원합니다.</p>
+                <p>취업 준비에만 집중하세요! 기본 월 60만 원에 부양가족 1인당 10만 원씩 추가되어 <span class="highlight">월 최대 100만 원을 6개월간 지원</span>합니다.</p>
             </div>
             <div class="benefit-card">
                 <h3>🎉 취업성공수당</h3>
-                <p>취업 후 오래 다닐수록 보너스! 6개월 근속 시 50만 원, 12개월 근속 시 100만 원 <span class="highlight">(총 150만 원)</span>을 추가 지급합니다.</p>
+                <p>취업 후 오래 다닐수록 보너스! 6개월 근속 시 50만 원, 12개월 근속 시 100만 원 <strong>(총 150만 원 추가 지급)</strong></p>
             </div>
             <div class="benefit-card">
                 <h3>🤝 맞춤형 취업 컨설팅</h3>
@@ -169,20 +224,20 @@
             </div>
             <div class="benefit-card">
                 <h3>🛠 직업훈련 & 일경험</h3>
-                <p>내일배움카드로 직업훈련을 받거나, 청년 미래내일 일경험 등 <span class="highlight">실제 기업 실무 프로그램</span>에 참여할 수 있습니다.</p>
+                <p>내일배움카드로 직업훈련을 받거나, 청년 미래내일 일경험 등 <span class="highlight">실제 기업 실무 프로그램 연계</span></p>
             </div>
-            <button type="button" class="start-btn" onclick="startDiagnosis()">🎯 나의 혜택 1분 자가진단 시작하기</button>
+            <button type="button" class="start-btn" onclick="startDiagnosis()">🎯 자가진단 시작하기</button>
         </div>
     </div>
 
     <div id="diag-page">
-        <header style="text-align:center; padding:20px; background:#e3f2fd;">
-            <h1 style="font-size:22px; margin:0; color:#004e92;">내 혜택 모의진단</h1>
-        </header>
+        <div class="diag-header">
+            <h1>내 혜택 알아보기</h1>
+        </div>
 
         <form id="diag-form">
             <div class="step-section">
-                <div class="step-title">✅ STEP 1. 나의 만 나이는?</div>
+                <div class="step-title">1. 나의 만 나이는? <span style="color:red">*</span></div>
                 <select id="age" class="form-select" onchange="checkAge()">
                     <option value="" disabled selected>만 나이를 선택해 주세요</option>
                     <option value="15-17">만 15세 ~ 17세</option>
@@ -191,19 +246,57 @@
                 </select>
             </div>
 
+            <div class="step-section" id="teen-student-step">
+                <div class="step-title">1-1. 최종 학력 및 현재 학교 상태를 선택해 주세요. <span style="color:red">*</span></div>
+                <select id="teen_student" class="form-select" onchange="checkTeenStudent()">
+                    <option value="" disabled selected>학력 및 학교 상태를 선택해 주세요</option>
+                    <option value="enrolled_general">일반 고등학교 재학 중</option>
+                    <option value="enrolled_special">특성화고(직업계고) 재학 중</option>
+                    <option value="graduated">고등학교 졸업 / 중졸 / 학교 밖 청소년</option>
+                </select>
+                <div id="teen-alert" class="alert-box student-alert"></div>
+            </div>
+
+            <div class="step-section" id="teen-grad-step">
+                <div class="step-title">🎓 특성화고 현재 학년을 선택해 주세요. <span style="color:red">*</span></div>
+                <select id="teen_grad" class="form-select" onchange="checkTeenGrad()">
+                    <option value="" disabled selected>학년을 선택해 주세요</option>
+                    <option value="grade3">3학년 (내년 1~2월 졸업 예정)</option>
+                    <option value="grade12">1~2학년</option>
+                </select>
+                <div id="teen-grad-alert" class="alert-box info-alert" style="margin-top:10px; display:none;"></div>
+            </div>
+
             <div class="step-section" id="student-step">
-                <div class="step-title">🎓 STEP 1-1. 혹시 학생이신가요?</div>
-                <select id="student" class="form-select">
-                    <option value="" disabled selected>현재 학적 상태를 선택해 주세요</option>
-                    <option value="yes">예, 올해 또는 내년 졸업 예정입니다.</option>
+                <div class="step-title">1-1. 현재 학적 상태를 선택해 주세요. <span style="color:red">*</span></div>
+                <select id="student" class="form-select" onchange="checkStudent()">
+                    <option value="" disabled selected>학적 상태를 선택해 주세요</option>
+                    <option value="expected">예, 올해 또는 내년 졸업 예정입니다.</option>
+                    <option value="enrolled">재학생 / 휴학생입니다.</option>
                     <option value="no">아니오, 이미 졸업했거나 학생이 아닙니다.</option>
                 </select>
+                
+                <div id="student-alert" class="alert-box student-alert">
+                    ⚠️ <strong>현재 일반 재학생(휴학생)은 원칙적으로 참여가 불가능합니다.</strong><br>
+                    단, 졸업직전 마지막 학기(예: 2월 졸업은 전년도 7월부터, 8월 졸업은 당해 1월부터)부터 신청 가능합니다. (야간대, 방통대는 즉시 참여 가능)
+                </div>
+            </div>
+
+            <div class="step-section" id="grad-step">
+                <div class="step-title">🎓 졸업 예정 시기를 선택해 주세요. <span style="color:red">*</span></div>
+                <select id="grad_month" class="form-select" onchange="checkGradMonth()">
+                    <option value="" disabled selected>졸업 시기를 선택해 주세요</option>
+                    <option value="aug">올해 8월 졸업 예정</option>
+                    <option value="feb">내년 2월 졸업 예정</option>
+                    <option value="other">그 외 시기 (내년 8월 등)</option>
+                </select>
+                <div id="grad-alert" class="alert-box info-alert"></div>
             </div>
 
             <div class="step-section">
-                <div class="step-title">✅ STEP 2. 함께 사는 가족은 몇 명인가요?</div>
+                <div class="step-title">2. 주민등록상 함께 사는 가족 수는? <span style="color:red">*</span></div>
                 <div class="step-desc">주민등록등본 기준(나, 배우자, 부모님, 자녀만 포함)</div>
-                <select id="family_cnt" class="form-select">
+                <select id="family_cnt" class="form-select" onchange="updateIncomeOptions()">
                     <option value="" disabled selected>가구원 수를 선택해 주세요</option>
                     <option value="1">1인 가구</option>
                     <option value="2">2인 가구</option>
@@ -215,37 +308,57 @@
             </div>
 
             <div class="step-section">
-                <div class="step-title">✅ STEP 3. 우리 가족의 대략적인 재산은?</div>
+                <div class="step-title">3. 우리 가족의 대략적인 월 평균 소득은? <span style="color:red">*</span></div>
                 <div class="info-box">
-                    💡 <strong>재산에는 무엇이 들어가나요?</strong><br>
-                    주택, 토지, 전/월세 보증금, 건축물, 자동차 등이 포함되며, <strong>금융기관 대출금은 증빙 시 차감</strong>됩니다. 전산 조회되니 대략적인 구간만 선택하세요.
+                    💡 <strong>어떤 소득이 들어가며, 누구의 소득을 합산하나요?</strong><br>
+                    주민등록등본상 <strong>1촌 이내(본인, 배우자, 부모, 자녀)</strong> 명의의 근로·사업·재산·연금 소득 등을 합산합니다.<br>
+                    <span style="color:#d84315;">※ 2촌(형제자매, 조부모 등)은 본인에게 유리한 쪽으로 포함 또는 제외를 선택할 수 있습니다.</span>
                 </div>
-                <select id="asset" class="form-select">
-                    <option value="" disabled selected>대략적인 재산 구간을 선택해 주세요</option>
-                    <option value="under4">4억 원 이하 (👉 기본 수당 가능성 높음)</option>
-                    <option value="4to5">4억 원 ~ 5억 원 이하 (👉 청년층 수당 가능성)</option>
-                    <option value="over5">5억 원 초과 (👉 취업지원 서비스 위주)</option>
+                <select id="income" class="form-select" onchange="checkIncome()">
+                    <option value="" disabled selected>먼저 2번 가구원 수를 선택해 주세요</option>
                 </select>
+                <div id="income-alert" class="alert-box info-alert">
+                    💡 <strong>정확한 소득을 모르셔도 괜찮습니다!</strong><br>
+                    제도 신청 시 공적 전산망 조회를 통해 1유형/2유형 자격이 자동으로 정확하게 판정됩니다.
+                </div>
             </div>
 
             <div class="step-section">
-                <div class="step-title">✅ STEP 4. 나의 현재 상황은?</div>
-                <div class="step-desc">아래 항목에 해당될 경우 취업지원 및 수당 혜택 확률이 올라갑니다. 가장 가까운 상황 하나만 선택해 주세요.</div>
+                <div class="step-title">4. 우리 가족의 대략적인 총 재산은? <span style="color:red">*</span></div>
+                <div class="info-box">
+                    💡 <strong>어떤 재산이 들어가며, 누구의 재산을 합산하나요?</strong><br>
+                    주민등록등본상 <strong>1촌 이내(본인, 배우자, 부모, 자녀)</strong> 명의의 주택, 보증금, 건축물, 자동차 등이 포함되며, <strong>재산취득･보유를 위한 대출금은 증빙 시 차감</strong>됩니다.<br>
+                    <span style="color:#d84315;">※ 2촌(형제자매, 조부모 등)은 본인에게 유리한 쪽으로 포함 또는 제외를 선택할 수 있습니다.</span>
+                </div>
+                <select id="asset" class="form-select" onchange="checkAsset()">
+                    <option value="" disabled selected>대략적인 재산 구간을 선택해 주세요</option>
+                    <option value="under4">4억 원 이하 (👉 1유형 가능성 높음)</option>
+                    <option value="4to5">4억 원 ~ 5억 원 이하 (👉 청년층 1유형 가능성)</option>
+                    <option value="over5">5억 원 초과 (👉 2유형 취업지원 가능)</option>
+                    <option value="unknown">잘 모르겠습니다 (정확한 금액 모름)</option>
+                </select>
+                <div id="asset-alert" class="alert-box info-alert">
+                    💡 <strong>정확한 재산 규모를 모르셔도 괜찮습니다!</strong><br>
+                    제도 신청 시 공적 전산망 조회를 통해 1유형/2유형 자격이 자동으로 정확하게 판정됩니다.
+                </div>
+            </div>
+
+            <div class="step-section">
+                <div class="step-title">5. 나의 현재 상황은? (해당하는 것 선택) <span style="color:red">*</span></div>
+                <div class="step-desc">아래 항목에 해당될 경우 취업지원 및 수당 혜택 확률이 올라갑니다.</div>
                 <select id="status" class="form-select">
                     <option value="" disabled selected>가장 해당하는 상황을 선택해 주세요</option>
-                    <option value="work">아르바이트·프리랜서·일용직 등으로 근로 중 (소득 적음)</option>
-                    <option value="youth">오랜 기간 구직 단념 (청년), 위기청소년</option>
-                    <option value="welfare">기초생활수급자, 차상위계층, 기초연금수급자</option>
-                    <option value="family">여성 가장, 미혼모, 한부모 가족</option>
-                    <option value="biz">영세 자영업자 (매출 저조) 또는 폐업 소상공인</option>
-                    <option value="etc">신용회복지원, 북한이탈주민, 국가유공자 가족 등</option>
-                    <option value="none">해당 사항 없음 (기본 요건으로 참여 가능!)</option>
+                    <option value="work">아르바이트·일용직 등 근로 중 (소득 적음)</option>
+                    <option value="welfare">기초생활수급자, 차상위계층 등</option>
+                    <option value="biz">영세 자영업자 또는 폐업 소상공인</option>
+                    <option value="etc">위기청소년, 한부모가족, 국가유공자 등 특정계층</option>
+                    <option value="none">해당 사항 없음 (기본 요건으로 참여!)</option>
                 </select>
             </div>
 
             <div class="step-section">
-                <div class="step-title">📍 STEP 5. 거주하시는 지역을 선택해 주세요.</div>
-                <div class="step-desc">동/읍/면 단위까지 선택하시면 가장 가까운 관할 센터를 안내해 드립니다.</div>
+                <div class="step-title">6. 거주하시는 지역을 선택해 주세요. <span style="color:red">*</span></div>
+                <div class="step-desc">가장 가까운 관할 센터를 안내해 드립니다.</div>
                 <div class="address-group">
                     <select id="addr_city" class="form-select" disabled style="background-color: #f1f1f1;">
                         <option value="울산광역시">울산광역시</option>
@@ -259,12 +372,14 @@
                 </div>
             </div>
 
-            <button type="button" class="start-btn" onclick="showResult()">결과 확인 및 센터 상담하기</button>
+            <div style="padding: 20px;">
+                <button type="button" class="start-btn" style="margin-top:0;" onclick="showResult()">결과 확인 및 센터 상담하기</button>
+            </div>
         </form>
 
         <div id="result-area">
-            <h2>수고하셨습니다! 🎉</h2>
-            <p>혼자 고민하지 마시고 <strong>신분증</strong> 하나만 준비해서 연락해 주시면, 관할 센터에서 가장 유리한 혜택을 알아서 찾아드립니다.</p>
+            <div id="dynamic-type-result" class="type-result-box">
+                </div>
             
             <div id="dynamic-center-info" class="center-info">
                 <h4>[관할 센터 정보가 여기에 표시됩니다]</h4>
@@ -275,7 +390,6 @@
                 <a href="javascript:void(0)" id="call-btn" class="btn-call">📞 지금 전화로 상담하기</a>
                 <a href="javascript:void(0)" id="kakao-btn" class="btn-kakao">💬 카카오톡으로 편하게 톡 하기</a>
                 <a href="javascript:void(0)" id="map-btn" target="_blank" class="btn-map">🗺️ 가까운 센터 지도 보기</a>
-                
                 <a href="https://www.ulsan1.kr/busi/busi05.php#form" target="_blank" class="btn-homepage">💻 온라인 상담 신청 (좋은일자리)</a>
             </div>
         </div>
@@ -283,21 +397,155 @@
 </div>
 
 <script>
-    // 1. 랜딩 -> 폼 전환
+    const medianIncome = { 1: 2564238, 2: 4199292, 3: 5359036, 4: 6494738, 5: 7556719, 6: 8555952 };
+
     function startDiagnosis() {
         document.getElementById('intro-page').style.display = 'none';
         document.getElementById('diag-page').style.display = 'block';
         window.scrollTo(0, 0);
     }
 
-    // 2. 학생 표시 로직 (드롭다운 대응)
     function checkAge() {
         const selectedAge = document.getElementById('age').value;
-        document.getElementById('student-step').style.display = 
-            (selectedAge === '15-17' || selectedAge === '18-34') ? 'block' : 'none';
+        const studentStep = document.getElementById('student-step');
+        const teenStudentStep = document.getElementById('teen-student-step');
+        const teenGradStep = document.getElementById('teen-grad-step');
+        const gradStep = document.getElementById('grad-step');
+        
+        studentStep.style.display = 'none';
+        teenStudentStep.style.display = 'none';
+        teenGradStep.style.display = 'none';
+        gradStep.style.display = 'none';
+        
+        document.getElementById('student').value = "";
+        document.getElementById('teen_student').value = "";
+        document.getElementById('teen_grad').value = "";
+        document.getElementById('grad_month').value = "";
+        
+        document.getElementById('student-alert').style.display = 'none';
+        document.getElementById('teen-alert').style.display = 'none';
+        document.getElementById('teen-grad-alert').style.display = 'none';
+        document.getElementById('grad-alert').style.display = 'none';
+
+        if (selectedAge === '18-34') {
+            studentStep.style.display = 'block';
+        } else if (selectedAge === '15-17') {
+            teenStudentStep.style.display = 'block';
+        }
     }
 
-    // 3. 울산 주소 연동 (구/군 -> 동/읍/면)
+    function checkTeenStudent() {
+        const val = document.getElementById('teen_student').value;
+        const alertBox = document.getElementById('teen-alert');
+        const teenGradStep = document.getElementById('teen-grad-step');
+        const teenGradAlert = document.getElementById('teen-grad-alert');
+        
+        alertBox.style.display = 'none';
+        teenGradStep.style.display = 'none';
+        teenGradAlert.style.display = 'none';
+        document.getElementById('teen_grad').value = "";
+
+        if (val === 'enrolled_general') {
+            alertBox.innerHTML = "⚠️ <strong>현재 일반 고등학교 재학생은 참여가 불가능합니다.</strong><br>특성화고(직업계고)를 제외한 일반 재학생은 <strong>졸업하는 같은 해 1월 1일부터 참여 가능</strong>합니다.";
+            alertBox.style.display = 'block';
+        } else if (val === 'enrolled_special') {
+            teenGradStep.style.display = 'block';
+        }
+    }
+
+    function checkTeenGrad() {
+        const val = document.getElementById('teen_grad').value;
+        const alertBox = document.getElementById('teen-grad-alert');
+        
+        alertBox.style.display = 'block';
+        if (val === 'grade3') {
+            alertBox.className = "alert-box info-alert";
+            alertBox.innerHTML = "💡 <strong>내년 졸업 예정자</strong>이시군요! 특성화고 3학년은 <strong>올해 7월 1일부터 신청 가능</strong>합니다.";
+        } else if (val === 'grade12') {
+            alertBox.className = "alert-box student-alert";
+            alertBox.innerHTML = "⚠️ <strong>1~2학년은 아직 참여가 불가능합니다.</strong><br>특성화고 학생은 3학년이 되는 해(졸업 전년도)의 7월 1일부터 신청할 수 있습니다.";
+        }
+    }
+
+    function checkStudent() {
+        const studentVal = document.getElementById('student').value;
+        const alertBox = document.getElementById('student-alert');
+        const gradStep = document.getElementById('grad-step');
+        const gradAlert = document.getElementById('grad-alert');
+        
+        alertBox.style.display = 'none';
+        gradStep.style.display = 'none';
+        gradAlert.style.display = 'none';
+        document.getElementById('grad_month').value = "";
+
+        if (studentVal === 'enrolled') {
+            alertBox.style.display = 'block';
+        } else if (studentVal === 'expected') {
+            gradStep.style.display = 'block';
+        }
+    }
+
+    function checkGradMonth() {
+        const gradVal = document.getElementById('grad_month').value;
+        const gradAlert = document.getElementById('grad-alert');
+        
+        gradAlert.style.display = 'block';
+        if (gradVal === 'aug') {
+            gradAlert.innerHTML = "💡 <strong>올해 8월 졸업 예정자</strong>이시군요! <strong>지금 바로 신청 가능</strong>합니다.";
+        } else if (gradVal === 'feb') {
+            gradAlert.innerHTML = "💡 <strong>내년 2월 졸업 예정자</strong>이시군요! <strong>올해 7월부터 신청 가능</strong>합니다. (미리 상담을 통해 준비해 보세요!)";
+        } else if (gradVal === 'other') {
+            gradAlert.innerHTML = "💡 졸업 연도의 <strong>1월 1일</strong>(8월 졸업) 또는 졸업 전년도의 <strong>7월 1일</strong>(2월 졸업)부터 신청 가능합니다.";
+        } else {
+            gradAlert.style.display = 'none';
+        }
+    }
+
+    function updateIncomeOptions() {
+        const cnt = document.getElementById('family_cnt').value;
+        const sel = document.getElementById('income');
+        const currentVal = sel.value;
+
+        sel.innerHTML = '';
+        if (!cnt) {
+            sel.add(new Option('먼저 2번 가구원 수를 선택해 주세요', ''));
+            sel.options[0].disabled = true;
+            sel.options[0].selected = true;
+            return;
+        }
+
+        const base = medianIncome[cnt];
+        sel.add(new Option('대략적인 소득 구간을 선택해 주세요', ''));
+        sel.options[0].disabled = true;
+        
+        sel.add(new Option(`중위소득 60% 이하 (월 ${Math.floor(base*0.6).toLocaleString()}원 이하) 👉 1유형 기본 가능`, 'under60'));
+        sel.add(new Option(`중위소득 100% 이하 (월 ${base.toLocaleString()}원 이하) 👉 2유형 (청년은 1유형도 가능)`, 'under100'));
+        sel.add(new Option(`중위소득 120% 이하 (월 ${Math.floor(base*1.2).toLocaleString()}원 이하) 👉 청년특례 1유형 가능`, 'under120'));
+        sel.add(new Option(`중위소득 120% 초과 (월 ${Math.floor(base*1.2).toLocaleString()}원 초과) 👉 2유형`, 'over120'));
+        sel.add(new Option(`잘 모르겠습니다 (정확한 금액 모름)`, 'unknown'));
+
+        if(currentVal && Array.from(sel.options).some(opt => opt.value === currentVal)) {
+            sel.value = currentVal;
+        } else {
+            sel.value = "";
+        }
+        checkIncome();
+    }
+
+    function checkIncome() {
+        const incomeVal = document.getElementById('income').value;
+        const alertBox = document.getElementById('income-alert');
+        if (incomeVal === 'unknown') alertBox.style.display = 'block';
+        else alertBox.style.display = 'none';
+    }
+
+    function checkAsset() {
+        const assetVal = document.getElementById('asset').value;
+        const alertBox = document.getElementById('asset-alert');
+        if (assetVal === 'unknown') alertBox.style.display = 'block';
+        else alertBox.style.display = 'none';
+    }
+
     const ADDR_GU_OPTIONS = ["중구","남구","북구","동구","울주군"];
     const ADDR_DONG_BY_GU = {
         "중구": ["다운동","태화동","우정동","학성동","성남동","중앙동","복산동","교동","반구1동","반구2동","병영1동","병영2동","약사동","성안동"],
@@ -330,7 +578,6 @@
     }
     initAddress();
 
-    // 4. 센터 매핑 및 결과 출력 (지도 검색어 추가)
     const CENTER_INFO = {
         namgu:  { name: "남구센터", addr: "울산 남구 수암로 5, 로타리빌딩", tel: "052-966-5001", kakao: "http://pf.kakao.com/_wgVLs/chat", q: "울산 남구 수암로 5" },
         dongbu: { name: "동구센터", addr: "울산 동구 방어진순환도로 678, 3층", tel: "052-966-3500", kakao: "http://pf.kakao.com/_xgxlxdUxj/chat", q: "울산 동구 방어진순환도로 678" },
@@ -340,42 +587,150 @@
 
     function getCenterByDong(gu, dong) {
         if (!gu && !dong) return null;
-        
         const str = dong || gu;
         if (/무거|옥동|신복|다운|구영|천상|굴화|장검|범서|언양|삼남|삼동|상북|두동|두서|웅촌/.test(str)) return CENTER_INFO.seobu;
         if (/방어|화정|일산|대송|전하|남목|주전|미포|동구/.test(str)) return CENTER_INFO.dongbu;
         if (/농소|화봉|송정|효문|양정|염포|매곡|호계|신천|중산|명촌|진장|연암|상안|천곡|달천|강동|병영|약사|성안|반구|북구/.test(str)) return CENTER_INFO.bukbu;
         if (/삼산|신정|달동|야음|선암|여천|두왕|수암|대현|삼호|용연|장생포|황성|이현|온산|온양|서생|덕하|청량|태화|우정|학성|성남|중앙|복산|교동|남구|중구|울주군/.test(str)) return CENTER_INFO.namgu;
-        
         return CENTER_INFO.namgu;
     }
 
     function showResult() {
+        const age = document.getElementById("age").value;
+        const teenStudent = document.getElementById("teen_student").value;
+        const teenGradStepVisible = document.getElementById("teen-grad-step").style.display;
+        const teenGrad = document.getElementById("teen_grad").value;
+        
+        const studentStepVisible = document.getElementById("student-step").style.display;
+        const student = document.getElementById("student").value;
+        const gradStepVisible = document.getElementById("grad-step").style.display;
+        const gradMonth = document.getElementById("grad_month").value;
+        
+        const familyCnt = document.getElementById("family_cnt").value;
+        const income = document.getElementById("income").value;
+        const asset = document.getElementById("asset").value;
+        const status = document.getElementById("status").value;
         const gu = document.getElementById("addr_gu").value;
         const dong = document.getElementById("addr_dong").value;
-        const centerDiv = document.getElementById("dynamic-center-info");
-        const callBtn = document.getElementById("call-btn");
-        const kakaoBtn = document.getElementById("kakao-btn");
-        const mapBtn = document.getElementById("map-btn");
 
-        if (!gu) {
-            alert("정확한 안내를 위해 거주하시는 구/군을 선택해 주세요.");
+        // 필수 누락 체크
+        if (!age || !familyCnt || !income || !asset || !status || !gu || !dong) {
+            alert("모든 필수 항목(*)을 빠짐없이 선택해 주세요.");
+            return;
+        }
+        if (age === '15-17' && !teenStudent) {
+            alert("학력 및 학교 상태를 선택해 주세요.");
+            return;
+        }
+        if (teenGradStepVisible === 'block' && !teenGrad) {
+            alert("특성화고 현재 학년을 선택해 주세요.");
+            return;
+        }
+        if (studentStepVisible === 'block' && !student) {
+            alert("학적 상태(학생 여부)를 선택해 주세요.");
+            return;
+        }
+        if (gradStepVisible === 'block' && !gradMonth) {
+            alert("졸업 예정 시기(월)를 선택해 주세요.");
             return;
         }
 
-        const center = getCenterByDong(gu, dong);
+        const resultTypeBox = document.getElementById("dynamic-type-result");
+        let rTitle = "";
+        let rDesc = "";
+        let gradNoticeHtml = "";
+        let isYouth = (age === '15-17' || age === '18-34');
+        let isBlocked = false;
 
+        // 1. 참여 차단 로직 (학생 신분)
+        if (age === '15-17') {
+            if (teenStudent === 'enrolled_general') {
+                isBlocked = true;
+                rTitle = "⚠️ 안타깝게도 현재는 참여가 어렵습니다.";
+                rDesc = "일반 고등학교 재학생은 원칙적으로 참여가 제한되며, <strong>졸업하는 같은 해 1월 1일</strong>부터 신청이 가능합니다.";
+            } else if (teenStudent === 'enrolled_special' && teenGrad === 'grade12') {
+                isBlocked = true;
+                rTitle = "⚠️ 안타깝게도 현재는 참여가 어렵습니다.";
+                rDesc = "특성화고(직업계고) 1~2학년은 참여가 제한되며, <strong>3학년이 되는 해의 7월 1일</strong>부터 신청할 수 있습니다.";
+            } else if (teenStudent === 'enrolled_special' && teenGrad === 'grade3') {
+                gradNoticeHtml = `<div class="notice-grad" style="background-color: #fff3cd; color: #856404; border: 1px solid #ffeeba; padding: 15px; border-radius: 8px; margin-bottom: 15px; font-size: 15px; line-height: 1.5;">💡 <strong>특성화고 3학년 (내년 졸업 예정)</strong>이시군요!<br>실제 신청은 <strong>올해 7월 1일부터 가능</strong>합니다. 미리 센터와 상담하여 준비해 보세요!</div>`;
+            }
+        } else if (age === '18-34') {
+            if (student === 'expected') {
+                if (gradMonth === 'feb') {
+                    gradNoticeHtml = `<div class="notice-grad" style="background-color: #fff3cd; color: #856404; border: 1px solid #ffeeba; padding: 15px; border-radius: 8px; margin-bottom: 15px; font-size: 15px; line-height: 1.5;">💡 <strong>내년 2월 졸업 예정자</strong>이시군요!<br>실제 신청은 <strong>올해 7월부터 가능</strong>합니다. 미리 센터와 상담하여 준비해 보세요!</div>`;
+                } else if (gradMonth === 'aug') {
+                    gradNoticeHtml = `<div class="notice-grad" style="background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; padding: 15px; border-radius: 8px; margin-bottom: 15px; font-size: 15px; line-height: 1.5;">💡 <strong>올해 8월 졸업 예정자</strong>이시군요!<br>지금 <strong>바로 신청이 가능</strong>합니다!</div>`;
+                }
+            } else if (student === 'enrolled') {
+                gradNoticeHtml = `<div class="notice-grad" style="background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; padding: 15px; border-radius: 8px; margin-bottom: 15px; font-size: 15px; line-height: 1.5;">⚠️ <strong>현재 일반 재학생</strong>은 원칙적으로 즉시 신청이 불가능하며, 졸업 직전 마지막 학기부터 신청 가능합니다. (야간대/방통대 예외)</div>`;
+            }
+        }
+
+        // 2. 1유형/2유형 판별 (차단되지 않은 경우에만)
+        if (!isBlocked) {
+            if (asset === 'unknown' || income === 'unknown') {
+                rTitle = "정확한 혜택 확인을 위해 전산 심사가 진행됩니다. 🕵️‍♂️";
+                rDesc = "제도를 신청하시면 공적 전산망 조회를 통해 가구 재산 및 소득이 자동으로 계산되며, 매월 수당이 지급되는 <strong>1유형</strong>이나 취업지원 중심의 <strong>2유형</strong>으로 정확하게 판정됩니다.<br><br>※ 하단 관할 센터로 편하게 문의하시거나 온라인으로 신청해 보세요.";
+            } else {
+                let isType1 = false;
+                let isBlockedMid = false;
+                let youthMsg = "";
+                let isSpec = ['welfare', 'biz', 'etc'].includes(status);
+
+                if (isYouth) {
+                    // 청년(15~34세) 1유형 특례 조건: 소득 120% 이하 & 재산 5억 이하
+                    if (['under60', 'under100', 'under120'].includes(income) && ['under4', '4to5'].includes(asset)) {
+                        isType1 = true;
+                        youthMsg = " (청년특례 기준 적용)";
+                    }
+                } else {
+                    // 중장년(35~69세)
+                    // 1유형 조건: 소득 60% 이하 & 재산 4억 이하
+                    if (income === 'under60' && asset === 'under4') {
+                        isType1 = true;
+                    }
+                    // 2유형 차단 요건: 소득 100% 초과
+                    if (['under120', 'over120'].includes(income)) {
+                        isBlockedMid = true;
+                    }
+                }
+
+                if (isBlockedMid) {
+                    if (isSpec) {
+                        rTitle = "🤝 특정계층 예외로 2유형 참여 가능성이 있습니다!";
+                        rDesc = "중장년층은 원칙적으로 소득 100% 초과 시 참여가 제한되나, 선택하신 <strong>특정계층 조건</strong>에 의해 소득·재산과 무관하게 <strong>2유형(맞춤형 취업지원)</strong> 참여가 가능합니다.<br><br>※ 정확한 확인을 위해 아래 센터로 편하게 문의해 주세요.";
+                    } else {
+                        rTitle = "⚠️ 원칙적으로 참여가 제한될 수 있습니다.";
+                        rDesc = "중장년(만 35~69세)의 경우 가구 중위소득 100% 초과 시 국민취업지원제도 일반 참여가 제한됩니다.<br><br>💡 <strong>단, 특정계층(한부모가족, 위기청소년, 영세 소상공인 등)에 해당하실 경우 소득·재산과 무관하게 2유형 참여가 가능</strong>하므로, 혹시 본인이 특정계층에 해당하는지 하단 관할 센터로 편하게 문의해 보시길 권장드립니다.";
+                    }
+                } else if (isType1) {
+                    rTitle = `🎉 1유형 (구직촉진수당) 참여 가능성이 높습니다!`;
+                    rDesc = `입력하신 소득과 재산 조건을 고려할 때${youthMsg}, 매월 최대 100만 원(본인+부양가족)씩 6개월간 지원받을 수 있는 <strong>1유형 대상자</strong>일 확률이 높습니다.<br><br>※ 정확한 확인을 위해 아래 센터로 편하게 문의해 주세요.`;
+                } else {
+                    rTitle = "🤝 2유형 (맞춤형 취업지원) 참여 가능성이 높습니다!";
+                    rDesc = "선택하신 요건을 고려할 때, 수당 위주보다는 이력서/면접 컨설팅, 내일배움카드 직업훈련 등을 집중 지원받는 <strong>2유형 대상자</strong>일 확률이 높습니다. (특정계층 해당 시 별도 지원 가능)<br><br>※ 정확한 확인을 위해 아래 센터로 편하게 문의해 주세요.";
+                }
+            }
+        }
+
+        resultTypeBox.innerHTML = gradNoticeHtml + `<h2>${rTitle}</h2><p>${rDesc}</p>`;
+
+        // 센터 정보 매핑
+        const center = getCenterByDong(gu, dong);
         if (center) {
+            const centerDiv = document.getElementById("dynamic-center-info");
+            const callBtn = document.getElementById("call-btn");
+            const kakaoBtn = document.getElementById("kakao-btn");
+            const mapBtn = document.getElementById("map-btn");
+
             centerDiv.innerHTML = `<h4>🏢 (주)좋은일자리 ${center.name}</h4>
                                    <p>📍 ${center.addr}</p>
                                    <p>📞 대표번호: <strong>${center.tel}</strong></p>`;
             
-            // 버튼들 링크 동적 연결
             callBtn.href = `tel:${center.tel.replace(/-/g, '')}`;
             callBtn.innerHTML = `📞 지금 전화로 상담하기 (${center.tel})`;
             kakaoBtn.href = center.kakao;
-            
-            // 지도 링크 연결 (카카오맵 검색)
             mapBtn.href = `https://map.kakao.com/link/search/${encodeURIComponent(center.q)}`;
         }
 
